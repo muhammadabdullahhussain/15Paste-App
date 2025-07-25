@@ -72,7 +72,7 @@ const Paste = () => {
         </div>
 
         <div className=" flex flex-col gap-5 mt-5 px-4 pb-4">
-          {filteredData.length > 0 &&
+          {filteredData.length > 0 ? 
             filteredData.map((paste) => {
               return (
                 <div key={paste?._id} className="border-[1px] border-gray-400  ">
@@ -122,7 +122,8 @@ const Paste = () => {
 
                 </div>
               );
-            })}
+            }) : <p className="text-[#FB9014] text-2xl font-bold">No Data Found</p>}
+            
         </div>
 
       </div>
