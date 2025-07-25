@@ -20,6 +20,19 @@ const toasts = (cause) => {
     transition: Bounce,
   });
 };
+const toastsError = (cause) => {
+  toast.error(cause, {
+    position: "top-right",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  });
+};
 
 const Home = () => {
   const [title, setTitle] = useState("");
@@ -100,8 +113,9 @@ const Home = () => {
             </div>
             <LuCopy
               onClick={() => {
-                navigator.clipboard.writeText(value);
-                toasts('copied successfully')
+                value.length > 0 ? navigator.clipboard.writeText(value) &&
+                  toasts('copied successfully') : toastsError('there is not text to copy')
+
               }}
               className="text-2xl cursor-pointer text-white hover:text-blue-400 transition duration-300"
             />
